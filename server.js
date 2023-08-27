@@ -74,10 +74,10 @@ app.get('/prompt/:id', async (req, res) => {
     }
 });
 
-//doesnt work
-app.get('prompt/random', async(req, res) => {
+// works
+app.get('/randomPrompt', async(req, res) => {
     try{
-        const allPrompts = Prompts.find({})
+        const allPrompts = await Prompts.find({})
         let random = Math.floor(Math.random()*allPrompts.length)
         let randPrompt = allPrompts[random]
         console.log(randPrompt)
