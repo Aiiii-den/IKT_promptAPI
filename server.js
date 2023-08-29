@@ -5,7 +5,7 @@ const express = require('express');
 */
 
 let { mongoose } = require('./config/mongodb');
-const { Prompts } = require("./schemas/prompts");
+const { Prompts } = require("./schemas/promptsSchema");
 
 
 const app = express();
@@ -13,7 +13,6 @@ const PORT = 3000;
 const cors = require('cors')
 app.use(express.json());
 app.use(cors());
-
 app.listen(PORT, (error) => {
     if (error) {
         console.log(error);
@@ -22,6 +21,7 @@ app.listen(PORT, (error) => {
     }
 });
 
+// TODO enable router and improve documentation
 /**
  * PROMPT API
  */

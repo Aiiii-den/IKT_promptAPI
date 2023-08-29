@@ -21,6 +21,6 @@ const promptSchema=new mongoose.Schema({
     }
 })
 
-const Prompts = mongoose.model('Prompts', promptSchema);
+const PromptsSchema = mongoose.model('Prompts', promptSchema);
 
-module.exports = { Prompts }
+module.exports = { Prompts: PromptsSchema }

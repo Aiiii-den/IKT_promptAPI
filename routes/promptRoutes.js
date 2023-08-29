@@ -11,7 +11,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('../config/mongodb');
-const { Prompts } = require('../schemas/prompts');
+const { Prompts } = require('../schemas/promptsSchema');
 
 
 

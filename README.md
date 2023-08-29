@@ -1,6 +1,6 @@
 # IKT_promptAPI
 
-### One of three REST-APIs for the final PWA project
+### First REST-APIs for my final PWA project
 
 __1. Prompt API :__ enables write, read all, read one random and delete functionality
 > Local Endpoints:
