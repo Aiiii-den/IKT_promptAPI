@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: PromptAPI
+  description: API which enables the input, read all, read one, read randon and deletion of question prompt
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8082'
+paths:
+  /prompt:
+    get:
+      tags:
+        - Prompt
+      summary: read all prompts
+      operationId: getAllPrompts
+      description: download an array of all available prompts
+      responses:
+        '200':
+          description: all available prompts read
+        '404':
+          description: prompts could not be read
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromptOutput'
+    post:
+      tags:
+        - Prompt
+      summary: add new prompt
+      operationId: createNewPrompt
+      description: create and save new prompt
+      responses:
+        '201':
+          description: prompt created
+        '404':
+          description: prompt could not be saved
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptInput'
+        description: new prompt question and topic input
+
+  /prompt/:id:
+    get:
+      tags:
+        - Prompt
+      summary: reads single prompt
+      operationId: readPrompt
+      description: reads a single prompt from the database by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: prompt-id
+          schema:
+              type: string
+      responses:
+        '200':
+          description: prompt read
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/PromptOutput'
+        '404':
+          description: prompt could not be read
+
+    delete:
+      tags:
+         - Prompt
+      summary: deletes single prompt
+      operationId: deletePrompt
+      description: deletes a prompt from the database by id
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          description: writings_id
+          schema:
+            type : string
+      responses:
+        '204':
+          description: prompt deleted
+        '404':
+          description: prompt could not be deleted
+
+  /random:
+    get:
+      tags:
+        - Prompt
+      summary: reads a random prompt
+      operationId: readRandomPrompt
+      description: reads a single random prompt from the database
+      responses:
+        '200':
+          description: random prompt read
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptOutput'
+        '404':
+          description: random prompt could not be read
+
+
+
+components:
+    schemas:
+      PromptOutput:
+        type: object
+        required:
+          - _id
+          - promptQuestion
+          - topic
+        properties:
+          _id:
+            type: string
+            example: gje2irh4ubjfne
+          promptQuestion:
+            type: string
+            example: What's your favourite animal?
+          topic:
+            type: string
+            example: favourites
+      PromptInput:
+        type: object
+        required:
+          - promptQuestion
+          - topic
+        properties:
+          promptQuestion:
+            type: string
+            example: What's your favourite animal?
+          topic:
+            type: string
+            example: favourites

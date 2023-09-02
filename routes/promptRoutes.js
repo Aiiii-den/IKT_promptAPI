@@ -1,47 +1,68 @@
-/**
- * implement
- * POST -- done
- * GET RANDOM -- done
- * GET ALL -- done
- * DELETE -- done
- *
- *
- */
+
 
 const express = require('express');
 const router = express.Router();
 const mongoose = require('../config/mongodb');
 const { Prompts } = require('../schemas/promptsSchema');
 
-
-
-
-// GET random
-router.get('/random', async(req, res) => {
-    const allPrompts = await Prompts.find().toArray();
-    let random = Math.floor(Math.random()*allPrompts.length);
-    const randomPrompt = allPrompts[random];
-    res.status(200);
-    res.send(randomPrompt);
-});
-
-// DELETE prompt by id
-router.delete('/:id', async(req, res) => {
+router.post('', async(req, res) => {
     try {
-        const id_obj = new ObjectId(req.params.id);
-        const prompt = await Prompts.deleteOne({ _id: id_obj })
-        console.log('prompt', prompt)
-        if(prompt.deletedCount === 1) {
-            res.status(204)
-            res.send( { message: "Prompt deleted" })
-        } else {
-            res.status(404)
-            res.send({ error: "Prompt does not exist!" })
-        }
-    } catch {
-        res.status(404)
-        res.send({ error: "something went wrong :(" })
+        const newPrompt = new Prompts({
+            promptQuestion: req.body.promptQuestion,
+            topic: req.body.topic
+        })
+        const result = await newPrompt.save();
+        res.status(201);
+        res.send(result);
+    }catch {
+        res.status(404);
+        res.send({
+            error: "Prompt could not be saved!"
+        })
     }
 });
+
+router.get('', async (req, res) => {
+    try{
+        Prompts.find({
+        }).then(async (Prompts) => {
+            console.log(Prompts);
+            res.send(Prompts);
+        })
+    } catch {
+        res.status(404);
+        res.send({
+            error: "Prompts could not be read!"
+        })
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    try{
+        const prompt = await Prompts.findOne({_id: req.params.id});
+        console.log(prompt);
+        res.send(prompt);
+    } catch {
+        res.status(404);
+        res.send({
+            error: "Prompt could not be read!"
+        })
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        await Prompts.deleteOne({_id: req.params.id})
+        console.log('Entry was deleted')
+        res.send()
+    }
+    catch {
+        res.status(404)
+        res.send({
+            error: "Prompt could not be deleted!"
+        })
+    }
+});
+
 
 module.exports = router;
