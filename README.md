@@ -13,7 +13,11 @@ GET random: https://localhost:8082/random/
 ```
 ```
 DEPLOYED ENDPOINTS:
-dba
+POST: https://ikt-promptapi.onrender.com/prompt
+GET one: https://ikt-promptapi.onrender.com/prompt/:id
+GET all: https://ikt-promptapi.onrender.com/prompt
+DELETE: hhttps://ikt-promptapi.onrender.com/prompt/:id
+GET random: https://ikt-promptapi.onrender.com/random/
 ```
 
 __2. Writings API:__ https://github.com/Aiiii-den/IKT_writingsAPI  
@@ -37,4 +41,4 @@ __3. Images API:__ https://github.com/Aiiii-den/IKT_imagesAPI
 
 ### Frontend:
 Frontend repository can be found at the following URL: https://github.com/Aiiii-den/IKT_frontendNew  
-Or deployed at: https://lalalala
+Or deployed at: https://ikt-frontend-new.vercel.app/

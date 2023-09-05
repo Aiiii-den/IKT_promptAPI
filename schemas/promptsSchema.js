@@ -1,11 +1,3 @@
-/**
- *
- * id
- * question
- * topic
- *
- */
-
 const mongoose = require('mongoose');
 
 const promptSchema=new mongoose.Schema({
