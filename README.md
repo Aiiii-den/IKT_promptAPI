@@ -37,7 +37,7 @@ __3. Images API:__ https://github.com/Aiiii-den/IKT_imagesAPI
    ```
 5. Set cors() in server.js to your personal/local connection point
 6. Run with `npm run watch`  
-7. Stop with `Ctrl + C`
+7. Stop with `ctrl + c`
 
 _P.S. before the app is useful at least one prompt needs to be added to the database_ 
 
