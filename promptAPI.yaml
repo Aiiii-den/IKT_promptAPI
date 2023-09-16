@@ -1,10 +1,11 @@
 openapi: 3.0.3
 info:
   title: PromptAPI
-  description: API which enables the input, read all, read one, read randon and deletion of question prompt
+  description: API which enables the input, read all, read one, read random and deletion of question prompt
   version: 1.0.0
 servers:
   - url: 'https://localhost:8082'
+  - url: 'https://ikt-promptapi.onrender.com'
 paths:
   /prompt:
     get:
