@@ -19,7 +19,7 @@ GET all: https://ikt-promptapi.onrender.com/prompt
 DELETE: hhttps://ikt-promptapi.onrender.com/prompt/:id
 GET random: https://ikt-promptapi.onrender.com/random/
 ```
-_For a visual representation of the possible requests please refer to the accompanying yaml: [promptAPI.yaml](https://github.com/Aiiii-den/IKT_promptAPI/blob/main/promptAPI.yaml)_  
+_For a better representation of the possible requests please refer to the accompanying yaml: [promptAPI.yaml](https://github.com/Aiiii-den/IKT_promptAPI/blob/main/promptAPI.yaml)_  
 
 __2. Writings API:__ https://github.com/Aiiii-den/IKT_writingsAPI    
 
